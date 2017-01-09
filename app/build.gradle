@@ -1,0 +1,138 @@
+apply plugin: 'com.android.application'
+
+def releaseProperties() {
+    def propertiesFile = file('keystore.properties')
+    if (propertiesFile.canRead()) {
+        def Properties properties = new Properties()
+        properties.load(new FileInputStream(propertiesFile))
+        if (properties != null && properties.containsKey('STORE_FILE') && properties.containsKey('STORE_PASSWORD') &&
+                properties.containsKey('KEY_ALIAS') && properties.containsKey('KEY_PASSWORD')) {
+            android.signingConfigs.release.storeFile = file(properties['STORE_FILE'])
+            android.signingConfigs.release.storePassword = properties['STORE_PASSWORD']
+            android.signingConfigs.release.keyAlias = properties['KEY_ALIAS']
+            android.signingConfigs.release.keyPassword = properties['KEY_PASSWORD']
+        } else {
+            println 'signing.properties found but some entries are missing'
+            android.buildTypes.release.signingConfig = null
+        }
+    } else {
+        println 'signing.properties not found'
+        android.buildTypes.release.signingConfig = null
+    }
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.yjt.plugin"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0.0.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        debug {}
+        release {
+            storeFile
+            storePassword
+            keyAlias
+            keyPassword
+        }
+    }
+
+    buildTypes {
+        debug {
+            ndk {
+                abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            }
+            buildConfigField 'String', 'SERVER_URL', '"https://heemoneyservice.heepay.com/Heemoney"'
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            ndk {
+                abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            }
+            buildConfigField 'String', 'SERVER_URL', '"https://heemoneyservice.heepay.com/Heemoney"'
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        def fileName = "${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))}" + '_release.apk'
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+
+        }
+    }
+
+    releaseProperties()
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/resources']
+            aidl.srcDirs = ['src/main/aidl']
+            renderscript.srcDirs = ['src/maom']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+        }
+        instrumentTest.setRoot('androidTest')
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+    productFlavors {
+        right {
+            applicationId "com.hynet.mergepay.zhongxin"
+            manifestPlaceholders = [app_icon    : "@mipmap/icon_right",
+                                    app_name    : "right",
+                                    CHANNEL_NAME: "right"]
+        }
+        wrong {
+            applicationId "com.hynet.mergepay.minsheng"
+            manifestPlaceholders = [app_icon    : "@mipmap/icon_wrong",
+                                    app_name    : "wrong",
+                                    CHANNEL_NAME: "wrong"]
+        }
+//        xingye {}
+//        zhaoshang {}
+//        gongshang {}
+//        jianshe {}
+//        productFlavors.all { flavor ->
+//            flavor.manifestPlaceholders = [ CHANNEL_NAME: name]
+//        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:design:25.1.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:multidex:1.0.1'
+    compile project(':Http')
+    compile project(':MultipleDialog')
+    compile project(':Utils')
+}

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PluginHelper</string>
+    <string name="http_prompt1">请检查网络是否可用</string>
+
+</resources>
