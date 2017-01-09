@@ -1,4 +1,4 @@
-package com.yjt.aar6;
+package com.demo.aar6;
 
 import android.app.Activity;
 import android.os.Bundle;

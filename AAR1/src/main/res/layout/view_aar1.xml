@@ -11,5 +11,5 @@
         android:text="AAR1"
         android:textColor="@android:color/darker_gray"
         android:textSize="20sp"/>
-
+    
 </RelativeLayout>

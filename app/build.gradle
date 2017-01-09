@@ -135,4 +135,9 @@ dependencies {
     compile project(':Http')
     compile project(':MultipleDialog')
     compile project(':Utils')
+    
+    compile project(':AAR1')
+    compile project(':AAR2')
+    compile project(':AAR3')
+    compile project(':AAR4')
 }
