@@ -6,6 +6,9 @@ import android.text.TextUtils;
 import com.yjt.plguin.BuildConfig;
 import com.yjt.plguin.constant.Constant;
 
+/**
+ * 插件配置
+ */
 public final class PluginConfiguration {
 
     private final int mRetryMaxTimes;

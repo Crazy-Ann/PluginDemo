@@ -13,6 +13,11 @@ import com.yjt.utils.LogUtil;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * 普通插件信息（请求任务）
+ *
+ * @param <B>
+ */
 public abstract class CommonPluginInfo<B extends PluginBehaviorListener> extends PluginBaseInfo<B> {
 
     public CommonPluginInfo(String externalPath) {

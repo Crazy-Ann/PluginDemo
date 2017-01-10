@@ -5,6 +5,9 @@ import com.yjt.plguin.config.PluginConfiguration;
 import com.yjt.plguin.entity.base.PluginBaseInfo;
 import com.yjt.plguin.exception.PluginLoadException;
 
+/**
+ * 插件核心接口
+ */
 public interface PluginListener {
 
     PluginConfiguration getPluginConfiguration();

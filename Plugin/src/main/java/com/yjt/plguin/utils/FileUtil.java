@@ -128,8 +128,7 @@ public class FileUtil {
         }
     }
 
-    public void copyFileFromAsset(Context context, String pathAssets, File destFile)
-            throws IOException {
+    public void copyFileFromAsset(Context context, String pathAssets, File destFile) throws IOException {
         if (TextUtils.isEmpty(pathAssets)) {
             throw new IOException("Asset path is empty.");
         }

@@ -64,7 +64,9 @@ public class PluginUpdater implements PluginUpdateListener {
             // Extract plugin from assets.
             File tempFile;
             try {
+                LogUtil.getInstance().println("PluginId = " + pluginExtraInfo.getPluginId());
                 tempFile = pluginExtraInfo.getPluginListener().getPluginInstallListener().createTempFile(pluginExtraInfo.getPluginId());
+                LogUtil.getInstance().println("tempFile = " + tempFile.getAbsolutePath());
             } catch (IOException exception) {
                 LogUtil.getInstance().println("Can not get temp file, error = " + exception.getLocalizedMessage());
                 LogUtil.getInstance().println(exception.toString());
@@ -115,7 +117,9 @@ public class PluginUpdater implements PluginUpdateListener {
             // Download plugin from online.
             File tempFile;
             try {
+                LogUtil.getInstance().println("PluginId = " + pluginExtraInfo.getPluginId());
                 tempFile = pluginExtraInfo.getPluginListener().getPluginInstallListener().createTempFile(pluginExtraInfo.getPluginId());
+                LogUtil.getInstance().println("tempFile = " + tempFile.getAbsolutePath());
             } catch (IOException exception) {
                 LogUtil.getInstance().println("Can not get temp file, error = " + exception.getLocalizedMessage());
                 LogUtil.getInstance().println(exception.toString());
@@ -170,7 +174,7 @@ public class PluginUpdater implements PluginUpdateListener {
         pluginExtraInfo.getPluginListener().getPluginCallback().postUpdate(pluginExtraInfo);
     }
 
-    private PluginExtraInfo requestPlugin(PluginExtraInfo pluginExtraInfo) {
+    public PluginExtraInfo requestPlugin(PluginExtraInfo pluginExtraInfo) {
         LogUtil.getInstance().println("Request remote plugin info.");
 
         // Check clear existing plugins.

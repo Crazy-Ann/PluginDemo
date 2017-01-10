@@ -8,6 +8,7 @@ import com.yjt.plguin.constant.Constant;
 import com.yjt.plguin.entity.Reader;
 import com.yjt.plguin.entity.NamespaceStack;
 import com.yjt.plguin.entity.StringBlock;
+import com.yjt.utils.LogUtil;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -427,9 +428,9 @@ public class CustomXmlResourceParser implements XmlResourceParser {
         try {
             doNext();
             return mEvent;
-        } catch (IOException e) {
+        } catch (IOException exception) {
             close();
-            throw e;
+            throw exception;
         }
     }
 
@@ -525,9 +526,10 @@ public class CustomXmlResourceParser implements XmlResourceParser {
 
     public final void readCheckType(Reader reader, int expectedType) throws IOException {
         int type = reader.readInt();
+        LogUtil.getInstance().println("type:" + type);
+        LogUtil.getInstance().println("expectedType:" + expectedType);
         if (type != expectedType) {
-            throw new IOException("Expected chunk of type 0x" + Integer.toHexString(expectedType) + ", read 0x"
-                                          + Integer.toHexString(type) + ".");
+            throw new IOException("Expected chunk of type 0x" + Integer.toHexString(expectedType) + ", read 0x" + Integer.toHexString(type) + ".");
         }
     }
 
@@ -537,7 +539,6 @@ public class CustomXmlResourceParser implements XmlResourceParser {
             readCheckType(mReader, Constant.Manifest.CHUNK_AXML_FILE);
                 /* chunkSize */
             mReader.skipInt();
-
             mStringBlock = StringBlock.getInstance().read(mReader);
             mNamespaces.increaseDepth();
             isCloseable = true;

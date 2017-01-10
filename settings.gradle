@@ -1,3 +1,3 @@
-include ':app', ':Http', ':MultipleDialog', ':Utils', ':AAR1', ':Plugin', ':AAR2', ':AAR3', ':AAR4'/*, ':AAR5', ':AAR6'*/
+include ':app', ':Http', ':MultipleDialog', ':Utils', ':AAR1', ':Plugin', ':AAR2', ':AAR3', ':AAR4', ':AAR5', ':AAR6'
 //def submoduleProject = project(':MultipleDialog')
 //submoduleProject.name = 'MultipleDialog'

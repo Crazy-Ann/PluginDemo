@@ -7,6 +7,9 @@ import com.yjt.plguin.entity.base.PluginExtraInfo;
 import com.yjt.plguin.exception.PluginLoadException;
 import com.yjt.plguin.exception.PluginException;
 
+/**
+ * 插件加载接口
+ */
 public interface PluginLoadListener {
 
     PluginExtraInfo load(@NonNull PluginExtraInfo pluginExtraInfo);

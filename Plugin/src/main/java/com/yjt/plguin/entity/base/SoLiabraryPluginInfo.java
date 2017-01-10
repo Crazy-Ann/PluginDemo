@@ -14,6 +14,11 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * so插件信息（请求任务）
+ *
+ * @param <B>
+ */
 public abstract class SoLiabraryPluginInfo<B extends PluginBehaviorListener> extends CommonPluginInfo<B> {
 
     protected Set<File> mSoLiabraries;

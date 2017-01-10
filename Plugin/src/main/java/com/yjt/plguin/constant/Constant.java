@@ -39,12 +39,12 @@ public class Constant {
     public final static class Configuration {
         public static final int RETRY_MAXIMUM_TIMES_NONE = -9999;
         public static final int RETRY_MAXIMUM_TIMES = 3;
-        public static final String PLUGIN_DIR = "plugin";
-        public static final String OPTIMIZED_DEX_DIR = "code_cache";
-        public static final String SO_LIBRARY_DIR = "lib";
-        public static final String TEMP_SO_LIBRARY_DIR = "lib_cache";
+        public static final String PLUGIN_DIR = "yjt";
+        public static final String OPTIMIZED_DEX_DIR = "optimized_dex";
+        public static final String SO_LIBRARY_DIR = "so_library";
+        public static final String TEMP_SO_LIBRARY_DIR = "temp_so_library";
         public static final String TEMP_FILE_SUFFIX = ".tmp";
-        public static final String PLUGIN_NAME = "base-1.apk";
+        public static final String PLUGIN_NAME = "plugin-engine.apk";
     }
 
     public final static class State {
@@ -72,22 +72,22 @@ public class Constant {
         public static final float RADIX_MULTS[] = {0.00390625F, 3.051758E-005F, 1.192093E-007F, 4.656613E-010F};
         public static final String DIMENSION_UNITS[] = {"px", "dip", "sp", "pt", "in", "mm", "", ""};
         public static final String FRACTION_UNITS[] = {"%", "%p", "", "", "", "", "", ""};
-        public static final int CHUNK_TYPE = 0x40001;
+        public static final int CHUNK_TYPE = 0x001C0001;
         public static final int ATTRIBUTE_IX_NAMESPACE_URI = 0;
         public static final int ATTRIBUTE_IX_NAME = 1;
         public static final int ATTRIBUTE_IX_VALUE_STRING = 2;
         public static final int ATTRIBUTE_IX_VALUE_TYPE = 3;
         public static final int ATTRIBUTE_IX_VALUE_DATA = 4;
         public static final int ATTRIBUTE_LENGHT = 5;
-        public static final int CHUNK_AXML_FILE = 0x40002;
-        public static final int CHUNK_RESOURCEIDS = 0x40003;
-        public static final int CHUNK_XML_FIRST = 0x40004;
-        public static final int CHUNK_XML_START_NAMESPACE = 0x40005;
-        public static final int CHUNK_XML_END_NAMESPACE = 0x40006;
-        public static final int CHUNK_XML_START_TAG = 0x40007;
-        public static final int CHUNK_XML_END_TAG = 0x40008;
-        public static final int CHUNK_XML_TEXT = 0x40009;
-        public static final int CHUNK_XML_LAST = 0x40010;
+        public static final int CHUNK_AXML_FILE = 0x00080003;
+        public static final int CHUNK_RESOURCEIDS = 0x00080180;
+        public static final int CHUNK_XML_FIRST = 0x00100100;
+        public static final int CHUNK_XML_START_NAMESPACE = 0x00100100;
+        public static final int CHUNK_XML_END_NAMESPACE = 0x00100101;
+        public static final int CHUNK_XML_START_TAG = 0x00100102;
+        public static final int CHUNK_XML_END_TAG = 0x00100103;
+        public static final int CHUNK_XML_TEXT = 0x00100104;
+        public static final int CHUNK_XML_LAST = 0x00100104;
         public static final String METHOD_NOT_SUPPORTED = "Method is not supported.";
         public static final int DEFAULT_VALUE = -1;
     }

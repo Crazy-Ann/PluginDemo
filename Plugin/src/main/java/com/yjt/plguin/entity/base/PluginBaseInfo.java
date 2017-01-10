@@ -14,6 +14,11 @@ import com.yjt.plguin.listener.PluginListener;
 import java.io.File;
 import java.util.Set;
 
+/**
+ * 插件基础信息(请求任务)
+ *
+ * @param <B>
+ */
 public abstract class PluginBaseInfo<B extends PluginBehaviorListener> {
 
     protected File mOptimizedDexDir;

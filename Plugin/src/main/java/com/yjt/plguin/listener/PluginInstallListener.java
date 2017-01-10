@@ -9,6 +9,9 @@ import com.yjt.plguin.exception.PluginInstallException;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * 插件安装接口
+ */
 public interface PluginInstallListener {
 
     boolean checkSafety(String apkPath);

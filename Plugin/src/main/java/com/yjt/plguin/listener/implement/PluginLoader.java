@@ -105,13 +105,14 @@ public class PluginLoader implements PluginLoadListener {
         PluginApk pluginApk;
         try {
             pluginApk = ManifestUtil.getInstance().parse(new File(apkPath));
+            LogUtil.getInstance().println(pluginApk.toString());
             pluginBaseInfo.setPluginApk(pluginApk);
 
             CompatUtil.getInstance().checkCompat(pluginBaseInfo.getPluginApk().dependencies, pluginBaseInfo.getPluginApk().ignoreDependencies);
             LogUtil.getInstance().println("Check pluginBaseInfo dependency compat success.");
 
             if (TextUtils.isEmpty(pluginApk.packageName)) {
-                throw new IOException("Can not get pluginBaseInfo's pkg name.");
+                throw new IOException("Can not get pluginBaseInfo's package name.");
             }
             if (TextUtils.isEmpty(pluginApk.versionCode)) {
                 throw new IOException("Can not get pluginBaseInfo's version code.");

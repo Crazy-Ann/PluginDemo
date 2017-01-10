@@ -6,6 +6,9 @@ package com.yjt.plguin.entity;
 
 import android.support.annotation.NonNull;
 
+/**
+ * 远程（服务器）插件信息
+ */
 public class RemotePluginInfo implements Comparable<RemotePluginInfo> {
 
     public String pluginId;

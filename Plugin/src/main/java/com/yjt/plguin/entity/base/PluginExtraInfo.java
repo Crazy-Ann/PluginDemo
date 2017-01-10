@@ -22,6 +22,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 插件额外信息(请求任务)
+ *
+ * @param <P>
+ */
 public abstract class PluginExtraInfo<P extends PluginBaseInfo> {
 
     protected String mPluginId;

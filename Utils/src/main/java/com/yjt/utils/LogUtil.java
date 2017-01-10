@@ -86,11 +86,11 @@ public class LogUtil/* implements OnLogListener */ {
     }
 
     public void println(String content) {
-        if (BuildConfig.DEBUG) {
+//        if (BuildConfig.DEBUG) {
             if (!TextUtils.isEmpty(content)) {
                 System.out.println(content);
             }
-        }
+//        }
     }
 
 //    public void v(String tag, final String format, final Object... obj) {

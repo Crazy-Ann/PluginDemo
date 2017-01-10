@@ -37,6 +37,7 @@ public class PluginInstaller implements PluginInstallListener {
         if (cache == null || cache.getFreeSpace() < Constant.Space.PLUGIN_MINIMUM_REQUIRED_CAPACITY) {
             cache = mContext.getCacheDir();
         }
+        LogUtil.getInstance().println("cache = " + cache);
         this.mTempDir = cache;
     }
 
@@ -124,8 +125,8 @@ public class PluginInstaller implements PluginInstallListener {
     public void deletePlugins(String pluginId) {
         File file = new File(getPluginDir(pluginId));
         if (!file.exists()) {
-            LogUtil.getInstance().println("Delete fail, dir not found, path = " + file.getAbsolutePath());
-            return;
+            LogUtil.getInstance().println("Delete failed, dir not found, path = " + file.getAbsolutePath());
+//            return;
         }
         FileUtil.getInstance().delete(file);
     }

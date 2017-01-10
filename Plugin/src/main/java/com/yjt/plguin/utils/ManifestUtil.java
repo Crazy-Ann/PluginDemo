@@ -151,9 +151,7 @@ public class ManifestUtil {
 
     private void computeDependency(String name, String value,
                                    Map<String, Integer> dependencies) {
-        String library = name.substring(
-                name.indexOf(BuildConfig.PREFIX) + BuildConfig.PREFIX.length(),
-                name.lastIndexOf(BuildConfig.SUFFIX));
+        String library = name.substring(name.indexOf(BuildConfig.PREFIX) + BuildConfig.PREFIX.length(), name.lastIndexOf(BuildConfig.SUFFIX));
         Integer version = Integer.valueOf(value);
         dependencies.put(library, version);
     }

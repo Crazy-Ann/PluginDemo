@@ -6,6 +6,9 @@ package com.yjt.plguin.entity;
 
 import android.support.annotation.NonNull;
 
+/**
+ * 本地插件信息
+ */
 public class LocalPluginInfo implements Comparable<LocalPluginInfo> {
 
     public String pluginId;
